@@ -1,0 +1,52 @@
+{"question": "What are the default BM25 parameters k1 and b in cited-rag?", "expected_doc": "01-bm25-ranking.md", "should_refuse": false}
+{"question": "Write the BM25 scoring formula used for chunks.", "expected_doc": "01-bm25-ranking.md", "should_refuse": false}
+{"question": "Why must the index be rebuilt after adding documents?", "expected_doc": "01-bm25-ranking.md", "should_refuse": false}
+{"question": "What does BM25 excel at matching, and what does it miss?", "expected_doc": "01-bm25-ranking.md", "should_refuse": false}
+{"question": "How is sublinear term frequency computed in the TF-IDF signal?", "expected_doc": "02-tfidf-cosine.md", "should_refuse": false}
+{"question": "What preprocessing steps apply before TF-IDF weighting?", "expected_doc": "02-tfidf-cosine.md", "should_refuse": false}
+{"question": "Why are TF-IDF vectors L2-normalized?", "expected_doc": "02-tfidf-cosine.md", "should_refuse": false}
+{"question": "How do BM25 and TF-IDF cosine complement each other?", "expected_doc": "02-tfidf-cosine.md", "should_refuse": false}
+{"question": "Write the Reciprocal Rank Fusion formula with its constant.", "expected_doc": "03-reciprocal-rank-fusion.md", "should_refuse": false}
+{"question": "Why does RRF need no score normalization?", "expected_doc": "03-reciprocal-rank-fusion.md", "should_refuse": false}
+{"question": "What rerank step runs after RRF fusion?", "expected_doc": "03-reciprocal-rank-fusion.md", "should_refuse": false}
+{"question": "What fields does each chunk record for traceability?", "expected_doc": "04-chunking.md", "should_refuse": false}
+{"question": "What are the chunk size and overlap in lines?", "expected_doc": "04-chunking.md", "should_refuse": false}
+{"question": "How are markdown headings treated during chunking?", "expected_doc": "04-chunking.md", "should_refuse": false}
+{"question": "What citation format with exact file line offsets marks each chunk?", "expected_doc": "04-chunking.md", "should_refuse": false}
+{"question": "What command builds the index and which files are accepted?", "expected_doc": "05-index-cli.md", "should_refuse": false}
+{"question": "How long does indexing 50 documents take?", "expected_doc": "05-index-cli.md", "should_refuse": false}
+{"question": "Why is re-indexing idempotent?", "expected_doc": "05-index-cli.md", "should_refuse": false}
+{"question": "What do the --k and --min-score flags control?", "expected_doc": "06-ask-cli.md", "should_refuse": false}
+{"question": "What does cited-rag ask --json output?", "expected_doc": "06-ask-cli.md", "should_refuse": false}
+{"question": "What is the exit code when the CLI refuses to answer?", "expected_doc": "06-ask-cli.md", "should_refuse": false}
+{"question": "How is the fidelity score computed?", "expected_doc": "07-fidelity-score.md", "should_refuse": false}
+{"question": "Why is generation extractive by default?", "expected_doc": "07-fidelity-score.md", "should_refuse": false}
+{"question": "What happens when fidelity falls below 0.5?", "expected_doc": "07-fidelity-score.md", "should_refuse": false}
+{"question": "When does cited-rag print Insufficient evidence?", "expected_doc": "08-refusal-policy.md", "should_refuse": false}
+{"question": "Do refused answers contain citations?", "expected_doc": "08-refusal-policy.md", "should_refuse": false}
+{"question": "What is the correct-refusal rate target?", "expected_doc": "08-refusal-policy.md", "should_refuse": false}
+{"question": "What command runs the benchmark and what are its targets?", "expected_doc": "09-eval-metrics.md", "should_refuse": false}
+{"question": "How is MRR computed in cited-rag eval?", "expected_doc": "09-eval-metrics.md", "should_refuse": false}
+{"question": "What is Recall@5 and what is its release target?", "expected_doc": "09-eval-metrics.md", "should_refuse": false}
+{"question": "How is the LLM adapter enabled and what is the default?", "expected_doc": "10-llm-adapter.md", "should_refuse": false}
+{"question": "Does enabling the LLM adapter change the citation format?", "expected_doc": "10-llm-adapter.md", "should_refuse": false}
+{"question": "How is prompt injection via documents mitigated?", "expected_doc": "10-llm-adapter.md", "should_refuse": false}
+{"question": "What are the four audited security risks and verdicts?", "expected_doc": "11-security-model.md", "should_refuse": false}
+{"question": "How does indexing protect against path traversal?", "expected_doc": "11-security-model.md", "should_refuse": false}
+{"question": "What is the operator's responsibility regarding secrets in the index?", "expected_doc": "11-security-model.md", "should_refuse": false}
+{"question": "cited-rag is the third portfolio pillar after which two projects?", "expected_doc": "12-offline-portfolio.md", "should_refuse": false}
+{"question": "What does offline-first mean for the cited-rag pipeline?", "expected_doc": "12-offline-portfolio.md", "should_refuse": false}
+{"question": "Why is the local JSON/SQLite index file portable by copying it to another machine?", "expected_doc": "12-offline-portfolio.md", "should_refuse": false}
+{"question": "Which CLI command answers questions with top-k chunks?", "expected_doc": "06-ask-cli.md", "should_refuse": false}
+{"question": "What is the best recipe for sourdough bread?", "expected_doc": null, "should_refuse": true}
+{"question": "Who won the 2024 football World Cup final?", "expected_doc": null, "should_refuse": true}
+{"question": "What are the lyrics of the latest pop hit?", "expected_doc": null, "should_refuse": true}
+{"question": "How do I fix a leaking car radiator?", "expected_doc": null, "should_refuse": true}
+{"question": "What caused the fall of the Roman Empire?", "expected_doc": null, "should_refuse": true}
+{"question": "What is the capital gains tax rate in Japan?", "expected_doc": null, "should_refuse": true}
+{"question": "Who is the lead actor of the newest blockbuster movie?", "expected_doc": null, "should_refuse": true}
+{"question": "How do I train for a marathon in 8 weeks?", "expected_doc": null, "should_refuse": true}
+{"question": "What is the horoscope for Leo this month?", "expected_doc": null, "should_refuse": true}
+{"question": "How to brew the perfect espresso at home?", "expected_doc": null, "should_refuse": true}
+{"question": "What are the transfer rumors for Paris Saint-Germain?", "expected_doc": null, "should_refuse": true}
+{"question": "What is the cheapest flight to Tokyo next week?", "expected_doc": null, "should_refuse": true}

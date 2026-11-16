@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cited-rag"
+version = "0.1.0"
+description = "Local RAG you can trust: every claim cited, or the answer refused."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "cited-rag" }]
+keywords = ["rag", "search", "bm25", "offline", "citations"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Environment :: Console",
+]
+dependencies = []
+
+[project.scripts]
+cited-rag = "cited_rag.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/shenn667/cited-rag"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
