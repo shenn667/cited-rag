@@ -111,3 +111,36 @@ def test_eval_missing_golden_exits_1(json_index, tmp_path, capsys):
     code, _ = _run(["eval", "--golden", str(tmp_path / "no.jsonl"),
                     "--index", json_index])
     assert code == 1
+
+
+def test_eval_threshold_gates(json_index, tmp_path, capsys):
+    golden = tmp_path / "golden.jsonl"
+    golden.write_text(
+        '{"question": "BM25 term frequency saturation?", '
+        '"expected_doc": "doc-a.md", "should_refuse": false}\n'
+    )
+    code, _ = _run(["eval", "--golden", str(golden), "--index", json_index,
+                    "--min-recall", "0.80", "--min-mrr", "0.60"])
+    assert code == 0
+
+    bad = tmp_path / "bad.jsonl"
+    bad.write_text(
+        '{"question": "BM25 term frequency saturation?", '
+        '"expected_doc": "no-such-doc.md", "should_refuse": false}\n'
+    )
+    code, _ = _run(["eval", "--golden", str(bad), "--index", json_index,
+                    "--min-recall", "0.80", "--min-mrr", "0.60"])
+    assert code == 1
+    assert "below --min-" in capsys.readouterr().err
+
+
+def test_eval_threshold_out_of_range_exits_2(json_index, tmp_path, capsys):
+    golden = tmp_path / "golden.jsonl"
+    golden.write_text(
+        '{"question": "BM25 term frequency saturation?", '
+        '"expected_doc": "doc-a.md", "should_refuse": false}\n'
+    )
+    with pytest.raises(SystemExit) as exc:
+        main(["eval", "--golden", str(golden), "--index", json_index,
+              "--min-recall", "1.5"])
+    assert exc.value.code == 2

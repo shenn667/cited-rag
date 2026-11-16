@@ -76,6 +76,12 @@ def build_parser() -> argparse.ArgumentParser:
     p_eval.add_argument("--min-score", type=float, default=DEFAULT_MIN_SCORE,
                         dest="min_score",
                         help="refusal gate used during eval (default: 0.35)")
+    p_eval.add_argument("--min-recall", type=float, default=None,
+                        dest="min_recall",
+                        help="fail (exit 1) if Recall@k is below this (0-1, default: no gate)")
+    p_eval.add_argument("--min-mrr", type=float, default=None,
+                        dest="min_mrr",
+                        help="fail (exit 1) if MRR is below this (0-1, default: no gate)")
     p_eval.add_argument("--json", action="store_true",
                         help="emit machine-readable JSON")
     _add_index_arg(p_eval)
@@ -87,6 +93,15 @@ def _check_k(k: int) -> int:
         print("Error: --k must be in [1, 20]", file=sys.stderr)
         raise SystemExit(2)
     return k
+
+
+def _check_gate(value: float | None, name: str) -> float | None:
+    if value is None:
+        return None
+    if not 0.0 <= value <= 1.0:
+        print(f"Error: {name} must be in [0, 1]", file=sys.stderr)
+        raise SystemExit(2)
+    return value
 
 
 def _check_min_score(value: float) -> float:
@@ -152,6 +167,8 @@ def cmd_ask(args: argparse.Namespace) -> int:
 def cmd_eval(args: argparse.Namespace) -> int:
     _check_k(args.k)
     _check_min_score(args.min_score)
+    _check_gate(args.min_recall, "--min-recall")
+    _check_gate(args.min_mrr, "--min-mrr")
     retriever = _load_retriever(args.index)
     if retriever is None:
         return 1
@@ -166,6 +183,20 @@ def cmd_eval(args: argparse.Namespace) -> int:
         print(json.dumps(metrics, ensure_ascii=False))
     else:
         print(format_eval_text(metrics))
+    failures = []
+    if args.min_recall is not None and metrics["recall_at_k"] < args.min_recall:
+        failures.append(
+            f"recall_at_k={metrics['recall_at_k']:.4f} "
+            f"below --min-recall={args.min_recall}"
+        )
+    if args.min_mrr is not None and metrics["mrr"] < args.min_mrr:
+        failures.append(
+            f"mrr={metrics['mrr']:.4f} below --min-mrr={args.min_mrr}"
+        )
+    if failures:
+        for failure in failures:
+            print(f"Error: {failure}", file=sys.stderr)
+        return 1
     return 0
 
 
