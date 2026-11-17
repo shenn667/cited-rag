@@ -1,6 +1,7 @@
 # cited-rag
 
 [![CI](https://github.com/shenn667/cited-rag/actions/workflows/ci.yml/badge.svg)](https://github.com/shenn667/cited-rag/actions/workflows/ci.yml)
+[![PyPI](https://img.shields.io/pypi/v/cited-rag.svg)](https://pypi.org/project/cited-rag/)
 [![Python 3.12+](https://img.shields.io/badge/python-3.12%2B-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![offline](https://img.shields.io/badge/offline-stdlib--only-lightgrey.svg)](https://github.com/shenn667/cited-rag)
