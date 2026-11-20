@@ -110,6 +110,18 @@ Golden format (one JSON object per line, 40 in-corpus + 12 out-of-corpus):
 Third portfolio pillar after `agent-context-bridge` and `llm-eval-ci`.
 See `PRODUCT_BRIEF.md` for the testable criteria (C1–C6) this release targets.
 
+## Links
+
+- Dataset (Hugging Face): https://huggingface.co/datasets/SHENNN667/cited-rag-golden-52
+  (published under namespace `SHENNN667` — no write rights on `shenn667`;
+  the lowercase `shenn667/...` URL returns 401, do not use it as the main link)
+- Eval page: https://shenn667.github.io/eval/ (live, deployed from
+  `shenn667/shenn667.github.io` main branch)
+- PyPI: https://pypi.org/project/cited-rag/
+- Article: https://dev.to/shenn667/zero-dependency-verified-agents-cited-or-refused-gated-in-ci-3fnh
+- Glama: none — `cited-rag` is a stdlib CLI, not an MCP server, so no listing
+  is expected unless an MCP wrapper is published.
+
 ## License
 
 MIT — see [LICENSE](LICENSE).
